@@ -32,6 +32,7 @@ public:
 
     void setPeak (double fs, double f, double q, double gainDb)
     {
+        f = safeF (fs, f);
         const double A = std::pow (10.0, gainDb / 40.0);
         const double w = 2.0 * kPi * f / fs, c = std::cos (w), al = std::sin (w) / (2.0 * q);
         set (1.0 + al * A, -2.0 * c, 1.0 - al * A, 1.0 + al / A, -2.0 * c, 1.0 - al / A);
@@ -39,6 +40,7 @@ public:
 
     void setLowShelf (double fs, double f, double gainDb)
     {
+        f = safeF (fs, f);
         const double A = std::pow (10.0, gainDb / 40.0);
         const double w = 2.0 * kPi * f / fs, c = std::cos (w), s = std::sin (w);
         const double al = s / 2.0 * std::sqrt (2.0), sq = 2.0 * std::sqrt (A) * al;
@@ -48,6 +50,7 @@ public:
 
     void setHighShelf (double fs, double f, double gainDb)
     {
+        f = safeF (fs, f);
         const double A = std::pow (10.0, gainDb / 40.0);
         const double w = 2.0 * kPi * f / fs, c = std::cos (w), s = std::sin (w);
         const double al = s / 2.0 * std::sqrt (2.0), sq = 2.0 * std::sqrt (A) * al;
@@ -57,12 +60,14 @@ public:
 
     void setLowPass (double fs, double f, double q)
     {
+        f = safeF (fs, f);
         const double w = 2.0 * kPi * f / fs, c = std::cos (w), al = std::sin (w) / (2.0 * q);
         set ((1 - c) / 2, 1 - c, (1 - c) / 2, 1 + al, -2 * c, 1 - al);
     }
 
     void setHighPass (double fs, double f, double q)
     {
+        f = safeF (fs, f);
         const double w = 2.0 * kPi * f / fs, c = std::cos (w), al = std::sin (w) / (2.0 * q);
         set ((1 + c) / 2, -(1 + c), (1 + c) / 2, 1 + al, -2 * c, 1 - al);
     }
@@ -70,17 +75,26 @@ public:
     // First-order sections via the bilinear transform (b2 = a2 = 0).
     void setLowPass1 (double fs, double f)
     {
+        f = safeF (fs, f);
         const double k = std::tan (kPi * f / fs);
         set (k, k, 0.0, k + 1.0, k - 1.0, 0.0);
     }
 
     void setHighPass1 (double fs, double f)
     {
+        f = safeF (fs, f);
         const double k = std::tan (kPi * f / fs);
         set (1.0, -1.0, 0.0, k + 1.0, k - 1.0, 0.0);
     }
 
 private:
+    // Keep every design frequency safely below Nyquist, whatever the sample rate.
+    static double safeF (double fs, double f)
+    {
+        const double lim = 0.45 * fs;
+        return f > lim ? lim : (f < 1.0 ? 1.0 : f);
+    }
+
     void set (double B0, double B1, double B2, double A0, double A1, double A2)
     {
         b0 = B0 / A0; b1 = B1 / A0; b2 = B2 / A0; a1 = A1 / A0; a2 = A2 / A0;
