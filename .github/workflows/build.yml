@@ -135,11 +135,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p tools && cd tools
-          gh release download --repo free-audio/clap-validator --pattern '*mac*' --clobber
-          ls
-          for a in *.tar.gz; do [ -f "$a" ] && tar xzf "$a"; done
+          gh release download --repo free-audio/clap-validator --pattern '*macos-universal*' --clobber
           for a in *.zip; do [ -f "$a" ] && unzip -oq "$a"; done
-          CV=$(find . -type f -name clap-validator -perm -u+x | head -1)
+          # The archive may hold a tarball, and zip does not keep the executable bit
+          for t in $(find . -name '*.tar*' -type f); do tar xf "$t"; done
+          find . -type f \( -name 'clap-validator' -o -name 'clap-validator-*' \) ! -name '*.zip' ! -name '*.tar*' -print
+          CV=$(find . -type f \( -name 'clap-validator' -o -name 'clap-validator-*' \) ! -name '*.zip' ! -name '*.tar*' | head -1)
+          [ -n "$CV" ] || { echo "::error::clap-validator not found in the release"; ls -R; exit 1; }
+          chmod +x "$CV"
           echo "using $CV"
           "$CV" validate --only-failed "../build/plugins/$NAME.clap"
 
