@@ -4,9 +4,9 @@ HH VS Musician (Reverb) - CLAP, VST3 and AU for macOS 11 or later
 1. Copy each plugin to its folder in your user Library
    (in Finder: Go menu > Go to Folder..., then paste the path):
 
-     HH VS Musician (Reverb).vst3       ->  ~/Library/Audio/Plug-Ins/VST3/
-     HH VS Musician (Reverb).component  ->  ~/Library/Audio/Plug-Ins/Components/
-     HH VS Musician (Reverb).clap       ->  ~/Library/Audio/Plug-Ins/CLAP/
+     HH VS Musician Reverb.vst3       ->  ~/Library/Audio/Plug-Ins/VST3/
+     HH VS Musician Reverb.component  ->  ~/Library/Audio/Plug-Ins/Components/
+     HH VS Musician Reverb.clap       ->  ~/Library/Audio/Plug-Ins/CLAP/
 
    Create a folder if it does not exist. You only need the formats your
    DAW uses: Reaper and FL Studio load VST3 (Reaper also loads CLAP and AU),
@@ -15,7 +15,7 @@ HH VS Musician (Reverb) - CLAP, VST3 and AU for macOS 11 or later
 2. These plugins are not notarised by Apple, so macOS quarantines them after
    download. Open Terminal and paste this one command to clear that:
 
-     xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"HH VS Musician (Reverb).vst3" ~/Library/Audio/Plug-Ins/Components/"HH VS Musician (Reverb).component" ~/Library/Audio/Plug-Ins/CLAP/"HH VS Musician (Reverb).clap"
+     xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"HH VS Musician Reverb.vst3" ~/Library/Audio/Plug-Ins/Components/"HH VS Musician Reverb.component" ~/Library/Audio/Plug-Ins/CLAP/"HH VS Musician Reverb.clap"
 
    (It may report "No such file" for a format you did not copy; that is fine.)
 

@@ -68,7 +68,7 @@ endif()
 make_clapfirst_plugins(
     TARGET_NAME       HHVSMusicianReverb
     IMPL_TARGET       vsm-impl
-    OUTPUT_NAME       "HH VS Musician (Reverb)"
+    OUTPUT_NAME       "HH VS Musician Reverb"   # file names; hosts show "HH VS Musician (Reverb)"
     ENTRY_SOURCE      Source/Plugin/ClapEntry.cpp
     BUNDLE_IDENTIFIER "com.tonybuzzcock.hh-vs-musician-reverb"
     BUNDLE_VERSION    ${PROJECT_VERSION}

@@ -11,7 +11,7 @@ permissions:
   contents: write   # tagged builds attach the plugins to a Release; main publishes panel screenshots
 
 env:
-  NAME: HH VS Musician (Reverb)
+  NAME: HH VS Musician Reverb
   ZIP: HH-VS-Musician-Reverb-mac.zip
 
 jobs:
