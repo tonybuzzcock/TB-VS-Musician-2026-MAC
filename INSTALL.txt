@@ -1,18 +1,21 @@
-HH VS Musician (Reverb) - CLAP, VST3 and AU for macOS 11 or later
+TB VS Musician - CLAP, VST3 and AU for macOS 11 or later
 (Apple Silicon and Intel)
 
-1. Copy each plugin into ONE of the two Library plug-in folders on your Mac
+1. If you have the old "HH VS Musician Reverb" files installed, delete them
+   first (all three formats). The new files replace them.
+
+   Copy each plugin into ONE of the two Library plug-in folders on your Mac
    (in Finder: Go menu > Go to Folder..., then paste the path):
 
    Main Library (for every user on the Mac; Finder asks for your password):
-     HH VS Musician Reverb.vst3       ->  /Library/Audio/Plug-Ins/VST3/
-     HH VS Musician Reverb.component  ->  /Library/Audio/Plug-Ins/Components/
-     HH VS Musician Reverb.clap       ->  /Library/Audio/Plug-Ins/CLAP/
+     TB VS Musician.vst3       ->  /Library/Audio/Plug-Ins/VST3/
+     TB VS Musician.component  ->  /Library/Audio/Plug-Ins/Components/
+     TB VS Musician.clap       ->  /Library/Audio/Plug-Ins/CLAP/
 
    or your own user Library (the path starts with ~):
-     HH VS Musician Reverb.vst3       ->  ~/Library/Audio/Plug-Ins/VST3/
-     HH VS Musician Reverb.component  ->  ~/Library/Audio/Plug-Ins/Components/
-     HH VS Musician Reverb.clap       ->  ~/Library/Audio/Plug-Ins/CLAP/
+     TB VS Musician.vst3       ->  ~/Library/Audio/Plug-Ins/VST3/
+     TB VS Musician.component  ->  ~/Library/Audio/Plug-Ins/Components/
+     TB VS Musician.clap       ->  ~/Library/Audio/Plug-Ins/CLAP/
 
    Put them wherever your other plugins already are. Create a folder if it
    does not exist. You only need the formats your DAW uses: Reaper and
@@ -27,16 +30,16 @@ HH VS Musician (Reverb) - CLAP, VST3 and AU for macOS 11 or later
 
      cd /Library/Audio/Plug-Ins
      ls */ | grep -i musician
-     sudo xattr -cr */"HH VS Musician Reverb".*
-     sudo codesign --force --deep --sign - */"HH VS Musician Reverb".*
+     sudo xattr -cr */"TB VS Musician".*
+     sudo codesign --force --deep --sign - */"TB VS Musician".*
      killall -9 AudioComponentRegistrar
 
    If you used your user Library (~/Library), the same without sudo:
 
      cd ~/Library/Audio/Plug-Ins
      ls */ | grep -i musician
-     xattr -cr */"HH VS Musician Reverb".*
-     codesign --force --deep --sign - */"HH VS Musician Reverb".*
+     xattr -cr */"TB VS Musician".*
+     codesign --force --deep --sign - */"TB VS Musician".*
      killall -9 AudioComponentRegistrar
 
    The "ls" line should list the plugin files; if it lists nothing, they are
@@ -46,8 +49,9 @@ HH VS Musician (Reverb) - CLAP, VST3 and AU for macOS 11 or later
 
 3. Open your DAW and rescan. In Reaper: Settings > Plug-ins > VST and CLAP,
    "Clear cache/re-scan". The plugin appears as
-   "HH VS Musician (Reverb)" by TB.
+   "TB VS Musician" by TB.
 
 Presets are kept in
-  ~/Library/Application Support/TB/HH VS Musician (Reverb)/Presets.txt
-and are shared by all three formats.
+  ~/Library/Application Support/TB/TB VS Musician/Presets.txt
+and are shared by all three formats. Presets saved when the plugin was called
+HH VS Musician (Reverb) are read from the old folder until you next save.

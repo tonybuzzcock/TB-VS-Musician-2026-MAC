@@ -11,8 +11,8 @@ permissions:
   contents: write   # tagged builds attach the plugins to a Release; main publishes panel screenshots
 
 env:
-  NAME: HH VS Musician Reverb
-  ZIP: HH-VS-Musician-Reverb-mac.zip
+  NAME: TB VS Musician
+  ZIP: TB-VS-Musician-mac.zip
 
 jobs:
   linux:
@@ -168,7 +168,7 @@ jobs:
       - name: Upload the plugins
         uses: actions/upload-artifact@v4
         with:
-          name: HH-VS-Musician-Reverb-mac
+          name: TB-VS-Musician-mac
           path: ${{ env.ZIP }}
 
       - name: Attach to GitHub Release (tagged builds only)
@@ -177,6 +177,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" "$ZIP" \
-            --title "HH VS Musician (Reverb) $GITHUB_REF_NAME" \
+            --title "TB VS Musician $GITHUB_REF_NAME" \
             --notes "CLAP, VST3 and AU for macOS 11 and later, Apple Silicon and Intel. See INSTALL.txt inside the zip." \
           || gh release upload "$GITHUB_REF_NAME" "$ZIP" --clobber

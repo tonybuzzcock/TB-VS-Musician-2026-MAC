@@ -1,4 +1,4 @@
-# HH VS Musician (Reverb) for current Macs: CLAP, VST3 and AU (AUv2),
+# TB VS Musician for current Macs: CLAP, VST3 and AU (AUv2),
 # universal (Apple Silicon + Intel), macOS 11 and later.
 #
 # The plugin is written once as a CLAP (Source/Plugin) and clap-wrapper builds
@@ -6,7 +6,7 @@
 # AudioUnitSDK) are downloaded from GitHub at configure time.
 #
 #   cmake -B build -DCMAKE_BUILD_TYPE=Release
-#   cmake --build build --config Release --target HHVSMusicianReverb_all
+#   cmake --build build --config Release --target TBVSMusician_all
 #
 # On Linux only the CLAP and the tests are built (for CI and development).
 
@@ -15,7 +15,7 @@ cmake_minimum_required(VERSION 3.21)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 11.0 CACHE STRING "Minimum macOS")
 set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Universal binary")
 
-project(HHVSMusicianReverb VERSION 1.0.0 LANGUAGES C CXX)
+project(TBVSMusician VERSION 1.0.0 LANGUAGES C CXX)
 if (APPLE)
     enable_language(OBJCXX)
 endif()
@@ -66,11 +66,11 @@ else()
 endif()
 
 make_clapfirst_plugins(
-    TARGET_NAME       HHVSMusicianReverb
+    TARGET_NAME       TBVSMusician
     IMPL_TARGET       vsm-impl
-    OUTPUT_NAME       "HH VS Musician Reverb"   # file names; hosts show "HH VS Musician (Reverb)"
+    OUTPUT_NAME       "TB VS Musician"
     ENTRY_SOURCE      Source/Plugin/ClapEntry.cpp
-    BUNDLE_IDENTIFIER "com.tonybuzzcock.hh-vs-musician-reverb"
+    BUNDLE_IDENTIFIER "com.tonybuzzcock.hh-vs-musician-reverb"   # kept so saved projects still find it
     BUNDLE_VERSION    ${PROJECT_VERSION}
     COPY_AFTER_BUILD  FALSE
     PLUGIN_FORMATS    ${VSM_FORMATS}

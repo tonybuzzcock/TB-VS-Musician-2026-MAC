@@ -5,7 +5,7 @@
 //
 //   clap_host_test <path to the .clap binary>
 // On macOS pass the binary inside the bundle:
-//   "HH VS Musician (Reverb).clap/Contents/MacOS/HH VS Musician (Reverb)"
+//   "TB VS Musician.clap/Contents/MacOS/TB VS Musician"
 
 #include <clap/clap.h>
 
@@ -129,7 +129,7 @@ int main (int argc, char** argv)
     check (f && f->get_plugin_count (f) == 1, "one plugin in the factory");
     const clap_plugin_descriptor_t* d = f->get_plugin_descriptor (f, 0);
     std::printf ("  %s by %s, id %s, version %s\n", d->name, d->vendor, d->id, d->version);
-    check (! std::strcmp (d->name, "HH VS Musician (Reverb)"), "plugin name");
+    check (! std::strcmp (d->name, "TB VS Musician"), "plugin name");
 
     const clap_plugin_t* p = f->create_plugin (f, &host, d->id);
     check (p && p->init (p), "create and init");

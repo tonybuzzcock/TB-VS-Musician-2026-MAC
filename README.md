@@ -1,6 +1,6 @@
-# HH VS Musician (Reverb) — modern Mac version
+# TB VS Musician — modern Mac version
 
-The same plugin as [HH-VS-Musician](https://github.com/tonybuzzcock/HH-VS-Musician)
+The same plugin as [TB-VS-Musician](https://github.com/tonybuzzcock/TB-VS-Musician)
 (same amp model, panel and presets), built for current Macs:
 
 - **CLAP, VST3 and AU (AUv2)**: Reaper, FL Studio, Logic, GarageBand, Ableton Live and others
@@ -14,7 +14,7 @@ The settings are saved with your DAW session, and the plugin reports its latency
 
 ## Install
 
-Download the latest green run under **Actions → Artifacts → HH-VS-Musician-Reverb-mac**
+Download the latest green run under **Actions → Artifacts → TB-VS-Musician-mac**
 (or a Release), unzip it, and follow `INSTALL.txt`. Copy the formats you want
 into the `VST3`, `Components` or `CLAP` folder. Those are in
 `/Library/Audio/Plug-Ins/` (the main Library) or `~/Library/Audio/Plug-Ins/`
@@ -64,7 +64,7 @@ you last touched.
 **Presets:** click **SAVE**, then one of the slots **1–8**, to store every setting
 (including Channel, Speaker, Input and Output). Click a slot to recall it. Saved
 slots are dark, the slot in use lights green. Presets are kept in
-`~/Library/Application Support/TB/HH VS Musician (Reverb)/Presets.txt`, shared by
+`~/Library/Application Support/TB/TB VS Musician/Presets.txt`, shared by
 every copy of the plugin, every session and all three formats.
 
 ## What is modelled, and how

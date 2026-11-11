@@ -1,5 +1,5 @@
 // VSMusicianClap.cpp
-// HH VS Musician (Reverb) as a CLAP plugin. clap-wrapper builds the VST3 and
+// TB VS Musician as a CLAP plugin. clap-wrapper builds the VST3 and
 // AU versions from this same code, so all three formats behave identically.
 //
 // Threads:
@@ -35,6 +35,8 @@ using namespace tbvs;
 namespace
 {
 
+// The id (and the VST3/AU ids clap-wrapper derives from it) is kept from when the
+// plugin was called HH VS Musician (Reverb), so saved projects still find it.
 const char* const kPluginId = "com.tonybuzzcock.hh-vs-musician-reverb";
 
 const char* const kFeatures[] = { CLAP_PLUGIN_FEATURE_AUDIO_EFFECT, CLAP_PLUGIN_FEATURE_DISTORTION,
@@ -43,9 +45,9 @@ const char* const kFeatures[] = { CLAP_PLUGIN_FEATURE_AUDIO_EFFECT, CLAP_PLUGIN_
 const clap_plugin_descriptor_t kDescriptor = {
     CLAP_VERSION_INIT,
     kPluginId,
-    "HH VS Musician (Reverb)",
+    "TB VS Musician",
     "TB",
-    "https://github.com/tonybuzzcock/VS-Musician-VST3",
+    "https://github.com/tonybuzzcock/TB-VS-Musician-2026-MAC",
     "",
     "",
     "1.0.0",
